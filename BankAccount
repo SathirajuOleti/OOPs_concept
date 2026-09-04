@@ -1,0 +1,29 @@
+class BankAccount:
+    def __init__(self, owner, balance, secret_key):
+        self.owner = owner
+        self.__balance = balance
+        self.__secret_key = secret_key
+    
+    def show_details(self):
+        print(f'Account Owner: {self.owner}')
+        print(f'Account Balance: {self.__balance}')
+    
+    def get_balance(self, secret_key):
+        if secret_key == self.__secret_key:
+            return self.__balance
+        else:
+            print("Invaild secret key")
+    
+    def set_balance(self, new_balance, secret_key):
+        if secret_key == self.__secret_key:
+            self.__balance = new_balance
+        else:
+            print("Invaild secret key")
+
+def default_test():
+    # Create an instance of BankAccount and test the methods
+    account = BankAccount("John Doe", 5000, "secret123")
+    account.show_details()
+    print("Account Balance:", account.get_balance("secret123"))
+    account.set_balance(8000, "secret123")
+    print("Updated Account Balance:", account.get_balance("secret123"))
