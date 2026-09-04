@@ -1,0 +1,28 @@
+class Customer:
+    def __init__(self, id, name, address, email):
+        self.id = id
+        self.name = name
+        self.address = address
+        self.email = email
+
+    def update_details(self):
+        print("Customer details updated")
+
+class GuestCustomer(Customer):
+    def update_details(self):
+        print("Guest customer details updated")
+
+class RegisteredCustomer(Customer):
+    def update_details(self):
+        print("Registered customer details updated")
+
+def default_test():
+    # Test for Customer
+    customer = Customer(id=1, name="John Doe", address="123 Main St", email="john@example.com")
+    customer.update_details()
+    # Test for GuestCustomer
+    guest_customer = GuestCustomer(id=2, name="Jane Doe", address="456 Main St", email="jane@example.com")
+    guest_customer.update_details()
+    # Test for RegisteredCustomer
+    registered_customer = RegisteredCustomer(id=3, name="Jim Beam", address="789 Main St", email="jim@example.com")
+    registered_customer.update_details()
