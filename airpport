@@ -1,0 +1,32 @@
+class Airport:
+    def __init__(self, airport_code, name, city):
+        self.airport_code = airport_code
+        self.name = name
+        self.city = city
+    
+    def update_schedule(self):
+        print("Updating general flight schedule")
+
+# TODO: Override the update_schedule method in MaintenanceAirport
+class MaintenanceAirport(Airport):
+    def update_schedule(self):
+        print("Updating maintenance flight schedule") 
+
+# TODO: Override the update_schedule method in InternationalAirport
+class InternationalAirport(Airport):
+    def update_schedule(self):
+        print("Updating international flight schedule")
+
+def default_test():
+    general_airport = Airport("GA123", "General Airport", "General City")
+    maintenance_airport = MaintenanceAirport("MA123", "Maintenance Airport", "Maintenance City")
+    international_airport = InternationalAirport("IA123", "International Airport", "International City")
+
+    print("General Airport Schedule:")
+    general_airport.update_schedule()
+
+    print("Maintenance Airport Schedule:")
+    maintenance_airport.update_schedule()
+
+    print("International Airport Schedule:")
+    international_airport.update_schedule()
