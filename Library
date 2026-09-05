@@ -1,0 +1,49 @@
+# Implement the Library class with specified attributes and methods
+class Library:
+    def __init__(self):
+        self.books = {}
+    def add_book(self, book_title):
+        if book_title in self.books:
+            print("Book already exists")
+        else:
+            self.books[book_title] = True
+    
+    def remove_book(self, book_title):
+        if book_title in self.books:
+            del self.books[book_title]
+        else:
+            print("Book not found")
+    
+    def check_out(self, book_title):
+        if book_title in self.books:
+            if self.books[book_title]:
+                self.books[book_title] = False
+            else:
+                print("Book not available")
+        else:
+            print("Book not found") #--------1 bug may be as per instruction
+    
+    def return_book(self, book_title):
+        if book_title in self.books:
+            if not self.books[book_title]:
+                self.books[book_title] = True 
+            else:
+                print("Book was not checked out")
+        else:
+            print("Book not found")
+    
+    def list_books(self):
+        return {title:"Available" if available else "Checked Out" for title , available in self.books.items()}
+            
+            
+# Do not modify the code below. This function will be called during testing.
+def default_test():
+    library = Library()
+    library.add_book("1984")
+    library.add_book("To Kill a Mockingbird")
+    library.check_out("1984")
+    print(library.list_books())
+    library.return_book("1984")
+    print(library.list_books())
+    library.remove_book("To Kill a Mockingbird")
+    print(library.list_books())
